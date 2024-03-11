@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 
 android {
@@ -37,6 +38,29 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testFixtures {
+        enable = true
+    }
+    publishing {
+        singleVariant("productionRelease")
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            productionRelease(MavenPublication) {
+                groupId = 'com.ahmedso.sample_sdk'
+                artifactId = 'sample_sdk'
+                version = '1.1.0'
+
+                afterEvaluate {
+                    from components.productionRelease
+                }
+            }
+        }
     }
 }
 

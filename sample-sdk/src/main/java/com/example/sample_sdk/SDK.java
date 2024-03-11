@@ -6,6 +6,6 @@ import android.widget.Toast;
 public class SDK {
 
     public static void start(Context context){
-        Toast.makeText(context, BuildConfig.MESSAGE, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, BuildConfig.BUILD_TYPE + BuildConfig.MESSAGE, Toast.LENGTH_SHORT).show();
     }
 }
